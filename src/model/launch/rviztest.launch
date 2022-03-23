@@ -1,0 +1,9 @@
+<launch>
+
+    <!-- 设置参数 -->
+    <param name="robot_description" textfile="$(find model)/urdf/test.urdf" />
+
+    <!-- 启动 rviz -->
+    <node pkg="rviz" type="rviz" name="rviz" args="-d $(find model)/config/rviz/rviztest.rviz"/>
+
+</launch>
