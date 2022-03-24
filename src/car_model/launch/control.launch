@@ -15,4 +15,6 @@
       <remap from="/joint_states" to="/$(arg robot_name)/joint_states" />
   </node>
 
+  <node name="cmdvel2gazebo" pkg="car_model" type="cmdvel2gazebo.py" respawn="true" output="screen"/>
+  
 </launch>
