@@ -16,5 +16,7 @@
   </node>
 
   <node name="cmdvel2gazebo" pkg="car_model" type="cmdvel2gazebo.py" respawn="true" output="screen"/>
+
+  <node name="vehicle_pose_and_velocity_updater" pkg="car_model" type="vehicle_pose_and_velocity_updater.py" respawn="true" output="screen"/>
   
 </launch>

@@ -55,6 +55,7 @@ class CmdVel2Gazebo:
 
     def callback(self,data):
         # w = v / r
+        #TODO why divide 0.3
         self.x = data.linear.x / 0.3
         # constrain the ideal steering angle such that the ackermann steering is maxed out
         self.z = max(-self.maxsteer,min(self.maxsteer,data.angular.z))
