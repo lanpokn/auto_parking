@@ -1,0 +1,8 @@
+prefix=/home/lanpokn/Documents/2022/auto_parking/parking/install
+
+Name: model2
+Description: Description of model2
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

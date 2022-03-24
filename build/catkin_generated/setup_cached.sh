@@ -7,8 +7,4 @@
 # new environment variables
 
 # modified environment variables
-export CMAKE_PREFIX_PATH="/home/lanpokn/Documents/2022/auto_parking/parking/devel:$CMAKE_PREFIX_PATH"
-export LD_LIBRARY_PATH="/home/lanpokn/Documents/2022/auto_parking/parking/devel/lib:$LD_LIBRARY_PATH"
 export PWD='/home/lanpokn/Documents/2022/auto_parking/parking/build'
-export ROSLISP_PACKAGE_DIRECTORIES='/home/lanpokn/Documents/2022/auto_parking/parking/devel/share/common-lisp'
-export ROS_PACKAGE_PATH="/home/lanpokn/Documents/2022/auto_parking/parking/src:$ROS_PACKAGE_PATH"

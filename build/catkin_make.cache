@@ -1,2 +1,2 @@
-model
+car_model:model
 -DCATKIN_DEVEL_PREFIX=/home/lanpokn/Documents/2022/auto_parking/parking/devel -DCMAKE_INSTALL_PREFIX=/home/lanpokn/Documents/2022/auto_parking/parking/install -G Unix Makefiles

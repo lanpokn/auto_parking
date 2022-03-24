@@ -131,6 +131,8 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/lanpokn/Documents/2022/auto_parking/parking/build/gtest/cmake_install.cmake")
+  include("/home/lanpokn/Documents/2022/auto_parking/parking/build/car_model/cmake_install.cmake")
+  include("/home/lanpokn/Documents/2022/auto_parking/parking/build/model/cmake_install.cmake")
 
 endif()
 
