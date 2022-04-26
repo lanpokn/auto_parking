@@ -9,7 +9,7 @@ def CreateBag():#img,imu, bagname, timestamps
     
     #use rosbag info test.bag to check whether is bag is right
     #rate is used to change the frequency , now is 60 ,means 1/60s per loop
-    #use rosbag play test.bag to pub the topic to cmd_vel
+    #use rosbag play test.bag to pub the topic to cmd
     rospy.init_node('bag_data_saver')
     bag = rosbag.Bag("/home/lanpokn/Documents/2022/auto_parking/parking/test.bag", 'w')
     rate = rospy.Rate(60)
