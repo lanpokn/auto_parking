@@ -4,6 +4,23 @@ from ros import rosbag
 import roslib
 import rospy
 from geometry_msgs.msg import Twist
+import csv
+import math
+v = []
+w = []
+def csv_read():
+    f = open("/home/lanpokn/Documents/2022/auto_parking/parking/data.csv", "r")
+    f_csv = csv.reader(f)
+    headers = next(f_csv)
+    car_width =  1.868       # car Wheelbase (in m)
+    #this should be equal to the real, we need real v and w, not a theta
+    #  r = L/math.fabs(math.tan(self.z))
+    for row in f_csv:
+        if(len(row) == 4):
+            row[0] = float(row[0])
+            row[2] = float(row[2])
+            v.append(row[0])
+            w.append(row[0]*math.fabs(math.tan(row[2]))/car_width)
 
 def CreateBag():#img,imu, bagname, timestamps
     
@@ -13,12 +30,12 @@ def CreateBag():#img,imu, bagname, timestamps
     rospy.init_node('bag_data_saver')
     bag = rosbag.Bag("/home/lanpokn/Documents/2022/auto_parking/parking/test.bag", 'w')
     rate = rospy.Rate(60)
-    for i in range(0,60):
+    for i in range(0,len(v)):
         cmd_vel = Twist()
         cmd_vel.angular.x = 0
         cmd_vel.angular.y = 0
-        cmd_vel.angular.z = 1
-        cmd_vel.linear.x = 1
+        cmd_vel.angular.z = w[i]
+        cmd_vel.linear.x = v[i]
         cmd_vel.linear.y = 0
         cmd_vel.linear.z = 0
         bag.write('/smart/cmd_vel',cmd_vel)
@@ -82,4 +99,5 @@ def CreateBag():#img,imu, bagname, timestamps
 
 if __name__ == "__main__":
       print(sys.argv)
+      csv_read()
       CreateBag()
