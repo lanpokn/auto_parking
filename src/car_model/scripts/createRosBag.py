@@ -11,16 +11,22 @@ w = []
 def csv_read():
     f = open("/home/lanpokn/Documents/2022/auto_parking/parking/data.csv", "r")
     f_csv = csv.reader(f)
+    t_diff  = 0.234
     headers = next(f_csv)
-    car_width =  1.868       # car Wheelbase (in m)
+    car_width =  0.22       # car Wheelbase (in m)
     #this should be equal to the real, we need real v and w, not a theta
     #  r = L/math.fabs(math.tan(self.z))
+    
     for row in f_csv:
         if(len(row) == 4):
             row[0] = float(row[0])
+            row[1] = float(row[1])
             row[2] = float(row[2])
-            v.append(row[0])
-            w.append(row[0]*math.fabs(math.tan(row[2]))/car_width)
+            row[3] = float(row[3])
+            for i in range(0,10):
+                temp_v = row[0]+i*t_diff/10*row[1]
+                v.append(temp_v)
+                w.append(temp_v*math.fabs(math.tan(row[2]+i*row[3]))/car_width)
 
 def CreateBag():#img,imu, bagname, timestamps
     
@@ -29,7 +35,7 @@ def CreateBag():#img,imu, bagname, timestamps
     #use rosbag play test.bag to pub the topic to cmd
     rospy.init_node('bag_data_saver')
     bag = rosbag.Bag("/home/lanpokn/Documents/2022/auto_parking/parking/test.bag", 'w')
-    rate = rospy.Rate(60)
+    rate = rospy.Rate(1)
     for i in range(0,len(v)):
         cmd_vel = Twist()
         cmd_vel.angular.x = 0
