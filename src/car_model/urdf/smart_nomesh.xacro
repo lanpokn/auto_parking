@@ -5,23 +5,9 @@
   <xacro:property name="PI" value="3.1415926835897931"/>
 
   <!-- base -->
-  <!-- <xacro:property name="base_length" value="2.695"/>
-  <xacro:property name="base_width" value="0.68"/>
-  <xacro:property name="base_height" value="1.370"/>
-  <xacro:property name="base_collision_height" value="0.875"/>
-  <xacro:property name="base_mass" value="956"/>
-  <xacro:property name="base_mass_ixx" value="343"/>
-  <xacro:property name="base_mass_iyy" value="728"/>
-  <xacro:property name="base_mass_izz" value="772"/> -->
-          <!-- VEHICLE.WIDTH = 0.19; 
-        VEHICLE.LENGTH = 0.22;
-        VEHICLE.LF = 0.05; 
-        VEHICLE.LB = 0.03; 
-        VEHICLE.WHEEL_WIDTH = 0.018; 
-        VEHICLE.WHEEL_LENGTH = 0.065;  -->
   <xacro:property name="base_length" value="0.22"/>
   <xacro:property name="base_width" value="0.19"/>
-  <xacro:property name="base_height" value="1.370"/>
+  <xacro:property name="base_height" value="0.1370"/>
   <xacro:property name="base_collision_height" value="0.875"/>
   <xacro:property name="base_mass" value="956"/>
   <xacro:property name="base_mass_ixx" value="343"/>
@@ -67,9 +53,8 @@
     </collision>
 
     <visual>
-      <origin xyz="0.05 0 ${base_collision_height}" rpy="0 0 ${PI/2}"/>  
+      <origin xyz="0 0 ${base_collision_height}" rpy="0 0 0"/>  
       <geometry>
-        <!-- <mesh filename="package://car_model/meshes/vehicle_body.dae"/> -->
         <box size="${base_length} ${base_width} ${base_height}"/>
       </geometry>
     </visual>
@@ -113,9 +98,8 @@
     </collision>
 
     <visual>
-      <origin xyz="0 0 0" rpy="0 0 -${PI/2}"/>
+      <origin xyz="0 0 0" rpy="${PI/2} 0 0"/>
       <geometry>
-        <!-- <mesh filename="package://car_model/meshes/wheel.dae"/> -->
         <cylinder length="${rear_tyre_length}" radius="${rear_tyre_r}"/>
       </geometry>
     </visual>
@@ -150,9 +134,8 @@
     </collision>
 
     <visual>
-      <origin xyz="0 0 0" rpy="0 0 ${PI/2}"/>
+      <origin xyz="0 0 0" rpy="${PI/2} 0 0"/>
       <geometry>
-        <!-- <mesh filename="package://car_model/meshes/wheel.dae"/> -->
         <cylinder length="${rear_tyre_length}" radius="${rear_tyre_r}"/>
       </geometry>
     </visual>
@@ -216,11 +199,9 @@
     </collision>
 
     <visual>
-      <origin xyz="0 0 0" rpy="0 0 -${PI/2}"/>
+      <origin xyz="0 0 0" rpy="${PI/2} 0 0"/>
       <geometry>
-        <!-- <mesh filename="package://car_model/meshes/wheel.dae"/> -->
         <cylinder length="${front_tyre_length}" radius="${front_tyre_r}"/>
-          <!-- <cylinder length="${front_tyre_length}" radius="${front_tyre_r}"/> -->
       </geometry>  
     </visual>
 
@@ -284,9 +265,8 @@
     </collision>
 
     <visual>
-      <origin xyz="0 0 0" rpy="0 0 ${PI/2}"/>
+      <origin xyz="0 0 0" rpy="${PI/2} 0 0"/>
       <geometry>
-        <!-- <mesh filename="package://car_model/meshes/wheel.dae"/> -->
         <cylinder length="${front_tyre_length}" radius="${front_tyre_r}"/>
       </geometry>  
     </visual>
@@ -300,6 +280,7 @@
         izz="${front_tyre_mass_izz}"/>
     </inertial>
   </link>  
+
 
 
 

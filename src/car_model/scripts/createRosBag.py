@@ -8,10 +8,10 @@ import csv
 import math
 v = []
 w = []
+t_diff = 0.234
 def csv_read():
     f = open("/home/lanpokn/Documents/2022/auto_parking/parking/data.csv", "r")
     f_csv = csv.reader(f)
-    t_diff  = 0.234
     headers = next(f_csv)
     car_width =  0.22       # car Wheelbase (in m)
     #this should be equal to the real, we need real v and w, not a theta
@@ -33,9 +33,10 @@ def CreateBag():#img,imu, bagname, timestamps
     #use rosbag info test.bag to check whether is bag is right
     #rate is used to change the frequency , now is 60 ,means 1/60s per loop
     #use rosbag play test.bag to pub the topic to cmd
+    # self.L = 1.868
     rospy.init_node('bag_data_saver')
     bag = rosbag.Bag("/home/lanpokn/Documents/2022/auto_parking/parking/test.bag", 'w')
-    rate = rospy.Rate(1)
+    rate = rospy.Rate(10/t_diff)
     for i in range(0,len(v)):
         cmd_vel = Twist()
         cmd_vel.angular.x = 0
